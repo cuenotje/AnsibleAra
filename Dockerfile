@@ -12,4 +12,5 @@ RUN set -xe \
 COPY settings.yaml /workingdir/.ara/server/
 EXPOSE 8000 3000
 WORKDIR /workingdir
-ENTRYPOINT [export ARA_SETTINGS="/workingdir/.ara/server/settings.yaml" && /usr/local/bin/ara-manage runserver]
+ENV ARA_SETTINGS="/workingdir/.ara/server/settings.yaml"
+ENTRYPOINT [/usr/local/bin/ara-manage, runserver]
