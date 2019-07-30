@@ -9,8 +9,11 @@ RUN set -xe \
     && mkdir -p /workingdir/conf/server \
     && mkdir -p /workingdir/www/logs \
     && rm -rf /var/cache/apk/* /tmp/*
+
 COPY settings.yaml /workingdir/conf/server/
 EXPOSE 8000 3000
-WORKDIR /workingdir
+
+VOLUME /workingdir
+
 ENV ARA_SETTINGS="/workingdir/conf/server/settings.yaml"
-ENTRYPOINT ["/usr/local/bin/ara-manage", "runserver"]
+ENTRYPOINT /usr/local/bin/ara-manage migrate && sleep 10 && /usr/local/bin/ara-manage runserver
