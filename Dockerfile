@@ -16,4 +16,4 @@ EXPOSE 8000 3000
 VOLUME /workingdir
 
 ENV ARA_SETTINGS="/workingdir/conf/server/settings.yaml"
-ENTRYPOINT /usr/local/bin/ara-manage migrate && sleep 10 && /usr/local/bin/ara-manage runserver
+ENTRYPOINT /usr/local/bin/ara-manage migrate && sleep 10 && /usr/local/bin/ara-manage runserver 0.0.0.0:8000
