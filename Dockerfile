@@ -2,9 +2,9 @@ FROM python:3-alpine
 
 # add yaml, ara python module and SSH package.
 RUN set -xe \
-    && apk add --no-cache --purge -u sudo curl ca-certificates openssh-client openssl \
+    && apk add --no-cache --purge -u sudo nodejs npm curl ca-certificates openssh-client openssl \
     && apk --update add --virtual .build-dependencies python-dev libffi-dev openssl-dev build-base git \
-    && pip install --no-cache --upgrade nodejs npm pyyaml ara[server] \
+    && pip install --no-cache --upgrade pyyaml ara[server] \
     && mkdir -p /workingdir/conf/server \
     && mkdir -p /workingdir/www/logs \
     && cd /workingdir && git clone https://github.com/ansible-community/ara-web && cd ara-web \
