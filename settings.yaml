@@ -9,7 +9,7 @@ default:
   - ::1
   - 127.0.0.1
   - localhost
-  BASE_DIR: /workingdir/.ara/server
+  BASE_DIR: /workingdir/conf/server
   CORS_ORIGIN_ALLOW_ALL: false
   CORS_ORIGIN_WHITELIST:
   - http://127.0.0.1:8000
@@ -17,7 +17,7 @@ default:
   DATABASE_CONN_MAX_AGE: 0
   DATABASE_ENGINE: django.db.backends.sqlite3
   DATABASE_HOST: null
-  DATABASE_NAME: /workingdir/.ara/server/ansible.sqlite
+  DATABASE_NAME: /workingdir/conf/server/ansible.sqlite
   DATABASE_PASSWORD: null
   DATABASE_PORT: null
   DATABASE_USER: null
