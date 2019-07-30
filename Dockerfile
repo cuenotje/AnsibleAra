@@ -6,11 +6,11 @@ RUN set -xe \
     && apk --update add --virtual .build-dependencies python-dev libffi-dev openssl-dev build-base \
     && pip install --no-cache --upgrade pyyaml ara[server] \
     && apk del --purge .build-dependencies \
-    && mkdir -p /workingdir/.ara/server \
+    && mkdir -p /workingdir/conf/server \
     && mkdir -p /workingdir/www/logs \
     && rm -rf /var/cache/apk/* /tmp/*
-COPY settings.yaml /workingdir/.ara/server/
+COPY settings.yaml /workingdir/conf/server/
 EXPOSE 8000 3000
 WORKDIR /workingdir
-ENV ARA_SETTINGS="/workingdir/.ara/server/settings.yaml"
+ENV ARA_SETTINGS="/workingdir/conf/server/settings.yaml"
 ENTRYPOINT ["/usr/local/bin/ara-manage", "runserver"]
