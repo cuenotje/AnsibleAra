@@ -5,10 +5,7 @@
 #   $ export ARA_SETTINGS="/root/.ara/server/settings.yaml"
 
 default:
-  ALLOWED_HOSTS:
-  - ::1
-  - 127.0.0.1
-  - localhost
+  ALLOWED_HOSTS: ['*']
   BASE_DIR: /workingdir/conf/server
   CORS_ORIGIN_ALLOW_ALL: false
   CORS_ORIGIN_WHITELIST:
