@@ -5,11 +5,11 @@ RUN set -xe \
     && apk add --no-cache --purge -u sudo curl ca-certificates openssh-client openssl \
     && apk --update add --virtual .build-dependencies python-dev libffi-dev openssl-dev build-base git \
     && pip install --no-cache --upgrade nodejs npm pyyaml ara[server] \
-    && apk del --purge .build-dependencies \
     && mkdir -p /workingdir/conf/server \
     && mkdir -p /workingdir/www/logs \
     && cd /workingdir && git clone https://github.com/ansible-community/ara-web && cd ara-web \
     && npm install \
+    && apk del --purge .build-dependencies \
     && rm -rf /var/cache/apk/* /tmp/*
 
 COPY settings.yaml /workingdir/conf/server/
