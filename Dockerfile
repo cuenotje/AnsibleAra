@@ -18,4 +18,6 @@ EXPOSE 8000 3000
 VOLUME /workingdir/conf
 
 ENV ARA_SETTINGS="/workingdir/conf/server/settings.yaml"
-ENTRYPOINT /usr/local/bin/ara-manage migrate && sleep 10 && /usr/local/bin/ara-manage runserver 0.0.0.0:8000 && npm start
+ENV ARA_WEB_PUBLIC_IP="localhost"
+WORKDIR /workingdir/ara-web
+ENTRYPOINT /usr/local/bin/ara-manage migrate && sed -i "s/.*apiURL.*/\ \"apiURL\"\:\ \"http\:\/\/${ARA_WEB_PUBLIC_IP}\:8000\"/g" /workingdir/ara-web/public/config.json && /usr/local/bin/ara-manage runserver 0.0.0.0:8000 & npm start
