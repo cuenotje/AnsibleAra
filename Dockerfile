@@ -9,7 +9,7 @@ RUN set -xe \
     && mkdir -p /workingdir/conf/server \
     && mkdir -p /workingdir/www/logs \
     && cd /workingdir && git clone https://github.com/ansible-community/ara-web && cd ara-web \
-    && npm install
+    && npm install \
     && rm -rf /var/cache/apk/* /tmp/*
 
 COPY settings.yaml /workingdir/conf/server/
