@@ -13,4 +13,5 @@ COPY settings.yaml /workingdir/conf/server/
 EXPOSE 8000 3000
 WORKDIR /workingdir
 ENV ARA_SETTINGS="/workingdir/conf/server/settings.yaml"
+CMD ["/usr/local/bin/ara-manage", "migrate"]
 ENTRYPOINT ["/usr/local/bin/ara-manage", "runserver"]
